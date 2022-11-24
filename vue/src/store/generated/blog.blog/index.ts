@@ -1,9 +1,10 @@
 import { Client, registry, MissingWalletError } from 'blog-client-ts'
 
 import { Params } from "blog-client-ts/blog.blog/types"
+import { Post } from "blog-client-ts/blog.blog/types"
 
 
-export { Params };
+export { Params, Post };
 
 function initClient(vuexGetters) {
 	return new Client(vuexGetters['common/env/getEnv'], vuexGetters['common/wallet/signer'])
@@ -38,6 +39,7 @@ const getDefaultState = () => {
 				
 				_Structure: {
 						Params: getStructure(Params.fromPartial({})),
+						Post: getStructure(Post.fromPartial({})),
 						
 		},
 		_Registry: registry,
