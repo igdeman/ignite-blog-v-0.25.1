@@ -26,7 +26,7 @@ func (k Keeper) SetPostCount(ctx sdk.Context, count uint64) {
 	postCountByteKey := []byte(types.PostCountKey)
 
 	countByteValue := make([]byte, 8)
-	binary.BigEndian.PutUint64(countByteValue, count);
+	binary.BigEndian.PutUint64(countByteValue, count)
 
 	store.Set(postCountByteKey, countByteValue)
 }
@@ -46,5 +46,5 @@ func (k Keeper) AppendPost(ctx sdk.Context, post types.Post) uint64 {
 
 	k.SetPostCount(ctx, count+1)
 
-	return count;
+	return count
 }

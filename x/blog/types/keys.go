@@ -14,7 +14,7 @@ const (
 	MemStoreKey = "mem_blog"
 
 	// Post indexes
-	PostKey = "Post/value/"
+	PostKey      = "Post/value/"
 	PostCountKey = "Post/count/"
 )
 
