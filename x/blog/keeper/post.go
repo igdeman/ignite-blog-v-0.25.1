@@ -1,7 +1,9 @@
 package keeper
 
 import (
+	"blog/x/blog/mongo"
 	"encoding/binary"
+	"log"
 
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -45,6 +47,12 @@ func (k Keeper) AppendPost(ctx sdk.Context, post types.Post) uint64 {
 	store.Set(postByteKey, postByteValue)
 
 	k.SetPostCount(ctx, count+1)
+
+	// Insert post into the Mongo DB
+	err := mongo.AddPostMongo(post)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	return count
 }
