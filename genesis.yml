@@ -1,4 +1,3 @@
-version: 1
-accounts:
-  - name: vault
-    coins: ["100000000000token", "1000stake"]
+init:
+  client:
+    keyring-backend: "os"
